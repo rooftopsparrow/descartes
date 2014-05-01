@@ -1,0 +1,43 @@
+/*  For print representing assignment statements 
+*/
+#ifndef PRINT_H
+#define PRINT_H
+
+#include "tokens.h"
+#include "stmtNode.h"
+#include "scanner.h"
+#include "id.h"
+#include "idList.h"
+
+class Print : public StmtNode {
+
+    private:
+
+        Id *lhs;
+        IdList *rhs;
+
+    public:
+
+        Print (){
+            nodekind = PRINT;
+        };
+
+        Id *getLHS() {
+            return lhs;
+        };
+
+        IdList *getRHS() {
+            return rhs;
+        };
+
+        void setRHS(IdList *n) {
+            rhs = n;
+        };
+
+        void setLHS(Id *n) {
+            lhs = n;
+        };
+
+        void parse(Scanner &scan);     //parses assignment stmt
+};
+#endif

@@ -10,15 +10,19 @@
 #include  <stdlib.h>
 
 Expr * Expr::parse(Scanner &scan){  
-	Expr		*subtree;				//the expression subtree
-	Expr		*lhs;					//lhs of the above subtree
-	Term		*t	= new Term();		//from the grammar
-	TermTail	*tt	= new TermTail();	//from the grammar
-	lhs		= t->parse(scan);			//get the term
-	subtree = tt->parse(scan);			//get the term-tail
-	if (subtree == NULL)	return lhs;
+	Expr *subtree;
+	Expr *lhs;
+
+	Term *t	= new Term();
+	TermTail *tt = new TermTail();
+
+	lhs	= t->parse(scan);
+	subtree = tt->parse(scan);
+
+	if (subtree == NULL) return lhs;
+
 	else {
 		subtree->setLeft(lhs);
 		return subtree;
 	}
-};  //parse
+};

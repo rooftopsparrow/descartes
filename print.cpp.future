@@ -1,0 +1,29 @@
+/*  For nodes representing assignment statements 
+**  Written by Aaron Gordon 
+*/
+
+#include "tokens.h"
+#include "print.h"
+#include "id.h"
+#include "idList.h"
+#include "error.h"
+#include <iostream>
+
+using namespace std;
+
+void  Print::parse(Scanner &scan) {
+
+    string s = scan.getCurrName();
+    Id *id = new Id(s);
+    IdList  *list = new IdList();
+    setLHS(id);
+    scan.nextToken();
+    if (scan.getCurrSymb() != COMMA) {
+        string msg  = "Print::parse:  wrong token type found --> ";
+        msg.append(scan.getCurrName());
+        new Error(-71, msg);
+    } //if
+    scan.nextToken();
+    rhs = list->parse(scan);
+
+}

@@ -6,8 +6,10 @@
 
 #include "scanner.h"
 #include "expr.h"
+
 class Term {
-		 public: Term() { };		//constructor
-		 public: Expr * parse(Scanner &);	
+    public:
+        Term() {};
+        Expr * parse(Scanner &);	
 };
 #endif

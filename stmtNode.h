@@ -8,9 +8,24 @@
 #include "node.h"
 
 class StmtNode : public Node {
-	private:	StmtNode	*next;			//the next statement
-	public: StmtNode (){ next = NULL;}; 	//constructor
-	public: StmtNode *getNext() {return next;};		//accessor
-	public: void setNext(StmtNode *n) {next = n;};
+
+	private:
+
+        StmtNode *next;
+
+    public:
+
+        StmtNode (){
+            next = NULL;
+        };
+
+        StmtNode *getNext() {
+            return next;
+        };
+
+        void setNext(StmtNode *n) {
+            next = n;
+        };
 };
+
 #endif

@@ -6,9 +6,24 @@
 #include "tokens.h"
 #include "expr.h"
 
+using namespace std;
+
 class Id : public Expr {
-		 private: std::string  printname; 	//the string representation of the identifier
-		 public: Id(std::string s) {nodekind = ID; printname = s;};			//constructor
-		 		 std::string getName() { return printname;};	//accessor method
+
+	private:
+
+    string  printname;
+
+	public:
+
+        Id(string s) {
+            nodekind = ID;
+            printname = s;
+        };
+
+        string getName() {
+            return printname;
+        };
 };
+
 #endif

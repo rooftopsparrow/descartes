@@ -1,0 +1,45 @@
+/*  For print representing assignment statements
+*/
+#if false
+#ifndef IDLIST_H
+#define IDLIST_H
+
+#include "id.h"
+#include "tokens.h"
+#include "node.h"
+// #include "scanner.h"
+
+class IdList : public Node {
+
+    private:
+
+        Id *lhs;
+        IdList *rhs;
+
+    public:
+
+        IdList (){
+            nodekind = COMMA;
+        };
+
+        Id *getLHS() {
+            return lhs;
+        };
+
+        IdList *getRHS() {
+            return rhs;
+        };
+
+        void setRHS(IdList *n) {
+            rhs = n;
+        };
+
+        void setLHS(Id *n) {
+            lhs = n;
+        };
+
+        IdList* parse(Scanner &scan);
+};
+
+#endif
+#endif

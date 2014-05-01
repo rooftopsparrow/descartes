@@ -8,13 +8,33 @@
 #include <stdlib.h>
 
 class Operator : public  Expr {
-	 Expr	*left;
-	 Expr 	*right;
-	 public: Operator() {left = NULL; };			//constructor
-	 public: Operator(int type) {left = NULL;  nodekind = type;};		//constructor
-	 public: Expr* getRight(){ return right;};		//returns right child
-	 public: Expr* getLeft(){ return left;};		//returns Left child
-	 public: void  setRight(Expr* ptr) {right = ptr;};	//assigns to right
-	 public: void  setLeft(Expr* ptr); 				//assigns to Left
+    Expr *left;
+    Expr *right;
+
+    public:
+
+        Operator() {
+            left = NULL;
+        };
+
+        Operator(int type) {
+            left = NULL;
+            nodekind = type;
+        };
+
+        Expr* getRight() {
+            return right;
+        };
+
+        Expr* getLeft() {
+            return left;
+        };
+
+        void setRight(Expr* ptr) {
+            right = ptr;
+        };
+
+        void setLeft(Expr* ptr);
+
 };
 #endif

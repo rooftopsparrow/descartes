@@ -1,0 +1,112 @@
+TERMINAL SYMBOLS
+0. PERIOD
+1. SEMICOLON
+2. IF
+3. THEN
+4. ELSE
+5. FI
+6. LOOP
+7. ID
+8. COLON
+9. REPEAT
+10. BREAK
+11. BECOMES
+12. PRINT
+13. READ
+14. '
+15. OR
+16. AND
+17. <
+18. <=
+19. =
+20. >=
+21. >
+22. <>
+23. +
+24. -
+25. *
+26. /
+27. (
+28. )
+29. CONST
+
+NON-TERMINAL SYMBOLS
+30. prog
+31. stmt-list
+32. stmt
+33. stmt-tail
+34. if-stmt
+35. loop-stmt
+36. break-stmt
+37. assign-stmt
+38. read-stmt
+39. print-stmt
+40. expr
+41. else-part
+42. id-option
+43. id-list-tail
+44. bool-term
+45. bool-term-tail
+46. bool-factor
+47. bool-factor-tail
+48. arith-expr
+49. relation-option
+50. term
+51. term-tail
+52. factor
+53. factor-tail
+54. atom
+
+GRAMMAR
+0.    prog : stmt-list PERIOD
+1.    stmt-list : stmt stmt-tail
+2.    stmt-tail : SEMICOLON stmt stmt-tail
+3.    stmt-tail :
+4.    stmt : if-stmt
+5.    stmt : loop-stmt
+6.    stmt : break-stmt
+7.    stmt : assign-stmt
+8.    stmt : read-stmt
+9.    stmt : print-stmt
+10.   stmt :
+11.   if-stmt : IF expr THEN stmt-list else-part
+12.   else-part : ELSE stmt-lit FI
+13.   else-part : FI
+14.   loop-stmt : LOOP ID COLON stmt-list REPEAT
+15.   break-stmt : BREAK id-option
+16.   id-option : ID
+17.   id-option :
+18.   assign-stmt : ID BECOMES expr
+19.   print-stmt : PRINT ID id-list-tail
+20.   read-stmt : READ ID id-list-tail
+21.   id-list-tail : , ID id-list-tail
+22.   id-list-tail :
+23.   expr : bool-term bool-term-tail
+24.   bool-term-tail :
+          OR bool-term bool-term-tail
+25.   bool-term-tail :
+26.   bool-term : bool-factor bool-factor-tail
+27.   bool-factor-tail :
+          AND bool-factor bool-factor-tail
+28.   bool-factor-tail :
+29.   bool-factor : arith-expr relation-option
+30.   relation-option : < arith-expr
+31.   relation-option : <= arith-expr
+32.   relation-option : = arith-expr
+33.   relation-option : >= arith-expr
+34.   relation-option : > arith-expr
+35.   relation-option : <> arith-expr
+36.   relation-option :
+37.   arith-expr : term term-tail
+38.   term-tail : + term term-tail
+39.   term-tail : - term term-tail
+40.   term-tail :
+41.   term : factor factor-tail
+42.   factor-tail : * factor factor-tail
+43.   factor-tail : / factor factor-tail
+44.   factor-tail :
+45.   factor : - factor
+46.   factor : atom
+47.   factor : ( expr )
+48.   atom : ID
+49.   atom : CONST

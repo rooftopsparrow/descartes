@@ -93,10 +93,15 @@ void getNumber(int &token, char word[], double &value) {
 } //getNumber
 
 void scan(int &token, char word[], double &value) {
+
 	cout << "Scanner: scan() " << endl ;
+
 	do {								//skip white space
+
 		fin.get(word[0]);
+		
 	}  while(isspace(word[0]));
+
 	if (isalpha(word[0]))	{			// id or keyword
 		getWord(token, word, value);
 	} else if (isdigit(word[0]))	{	// number

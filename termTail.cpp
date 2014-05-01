@@ -6,18 +6,24 @@ Expr * TermTail::parse(Scanner &scan) {
 	Expr		*rhs;					//lhs of the above subtree
 	Term		*t	= new Term();		
 	TermTail	*tt	= new TermTail();
-	// term-tail:  +  term  term-tail
-	//			   -  term  term-tail
+	
 	if (scan.getCurrSymb() == PLUS || scan.getCurrSymb() == MINUS) {	
-		Operator   *op = new Operator(scan.getCurrSymb());
+
+		Operator * op = new Operator(scan.getCurrSymb());
 		scan.nextToken();
-		rhs		= t->parse(scan);			//get the term
+		rhs	= t->parse(scan);
 		op->setRight(rhs);
-		subtree = tt->parse(scan);			//get the term-tail
+		subtree = tt->parse(scan);
+
 		if (subtree != NULL) {
+
 			subtree->setLeft(op);
 			return subtree;
-		} else return  op;
-	} //if * or /
+
+		}
+
+		return op;
+	} 
+
 	return NULL;
 }

@@ -8,13 +8,19 @@
 #include	"scanner.h"
 
 class ParseTree {
-	private:	StmtNode *root;		//points to recursive descent tree
-				Scanner  scan;		//Scanner object to retrieve tokens
-	public:		ParseTree();		//constructor
-				void build();
-				void execute();
-				void stmtTail (StmtNode &current);
-				void stmt (StmtNode  *&current); 
-				void init(std::string fname);
+
+	private:
+
+        StmtNode *root;		//points to recursive descent tree
+		Scanner scan;		//Scanner object to retrieve tokens
+
+	public:
+        
+        ParseTree();		//constructor
+		void build();
+		void execute();
+		void stmtTail (StmtNode &current);
+		void stmt (StmtNode  *&current); 
+		void init(std::string fname);
 };
 #endif

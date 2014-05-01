@@ -9,8 +9,17 @@
 #include  <iostream>
 
 class Expr : public Node {
-	public:	Expr (){ }; 	//constructor
-	public:	Expr * parse(Scanner &scan);
-	public: virtual void setLeft(Expr *) {std::cout << "expr.setLeft" << std::endl;  };
+
+    public:
+
+    	Expr (){};
+    	Expr * parse(Scanner &scan);
+    	virtual void setLeft(Expr *) {
+            std::cout << "expr.setLeft" << std::endl;
+        };
+        virtual void execute () {
+            std::cout << "expr.execute" << std::endl; 
+        }
 };
+
 #endif

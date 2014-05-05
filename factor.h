@@ -6,8 +6,12 @@
 
 #include "scanner.h"
 #include "expr.h"
+#include "runtimeStack.h"
+
 class Factor {
-		 public: Factor() { };		//constructor
-		 public: Expr * parse(Scanner &);	
+    public:
+	    Factor() { };
+		Expr * parse(Scanner &);	
+        double execute(RuntimeStack *);    
 };
 #endif

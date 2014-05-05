@@ -20,3 +20,4 @@ Expr * Term::parse(Scanner &scan) {
 		return subtree;
 	}
 }
+

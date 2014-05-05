@@ -6,6 +6,7 @@
 
 #include  "node.h"
 #include  "scanner.h"
+#include "runtimeStack.h"
 #include  <iostream>
 
 class Expr : public Node {
@@ -17,8 +18,9 @@ class Expr : public Node {
     	virtual void setLeft(Expr *) {
             std::cout << "expr.setLeft" << std::endl;
         };
-        virtual void execute () {
+        virtual double execute (RuntimeStack* stack) {
             std::cout << "expr.execute" << std::endl; 
+            return 0.0;
         }
 };
 

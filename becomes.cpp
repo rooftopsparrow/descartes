@@ -53,7 +53,7 @@ void Becomes::execute(RuntimeStack* stack) {
 	switch ( n->getKind() ) {
 
     case NUMBER:
-
+        cout << " (Number) ";
         num = (Number *) n;
         stack->symbolTable[ id->getName() ] = num->getValue();
         cout << num->getValue();
@@ -61,6 +61,8 @@ void Becomes::execute(RuntimeStack* stack) {
     break;
 
     case ID:
+
+        cout << " (Id) ";
 
         fromId = (Id *) n;
         // TODO: check that id exists
@@ -76,10 +78,15 @@ void Becomes::execute(RuntimeStack* stack) {
     case MINUS:
     case DIV:
     case TIMES:
+    {
 
+        cout << " (Operator) ";
         op = (Operator *) n;
+        
+        double result = op->execute(stack);
 
-
+        stack->symbolTable[ id->getName() ] = result;
+    }
     break;
 
     default:

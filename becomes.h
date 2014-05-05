@@ -6,6 +6,7 @@
 
 #include "tokens.h"
 #include "stmtNode.h"
+#include "runtimeStack.h"
 #include "scanner.h"
 #include "expr.h"
 #include "id.h"
@@ -39,6 +40,8 @@ class Becomes : public StmtNode {
 			};
 
 			void assignment(Scanner &scan);
+
+			void execute(RuntimeStack* stack);
 
 };
 

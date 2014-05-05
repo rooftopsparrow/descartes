@@ -31,11 +31,8 @@ void ParseTree::init(string fname) {
 void ParseTree::execute(){
 
     StmtNode *curr = root;
-    map<string, double> symbolTable;
+    RuntimeStack * stack = new RuntimeStack();
 
-    // Classes we need
-    Number *num;
-    Operator *op;
 
     cout << "\n\n\nParseTree::executing" << endl;
 
@@ -47,75 +44,22 @@ void ParseTree::execute(){
 
                 cout << "assign-stmt : ID BECOMES expr" << endl; 
                 Becomes  *be = (Becomes *) curr;
-                Node *n = be->getLHS();
-                Id  *id = (Id *) n;
 
-                // Add to symbol table if it doesn't exist
-                if ( symbolTable.count( id->getName() ) == 0 ) symbolTable[ id->getName() ]; 
-
-                cout <<  id->getName()  << "  := " ;
-                n = be->getRHS();
-
-                // figure out what we have as the expression
-                // on the right hand side
-                switch ( n->getKind() ) {
-
-                    case NUMBER:
-                    {
-                        num = (Number *) n;
-                        symbolTable[ id->getName() ] = num->getValue();
-                        cout << num->getValue();
-                    }
-                    break;
-
-                    case ID:
-                    {
-
-                        Id *fromId = (Id *) n;
-                        if ( symbolTable.count( fromId->getName() ) == 0 ) new Error(99, " Assignment to undefined variable");
-                        symbolTable[ id->getName() ] = symbolTable[ fromId->getName() ];
-                        cout << fromId->getName();
-
-                    }
-                    break;
-
-                    case PLUS:
-                    case MINUS:
-                    case DIV:
-                    case TIMES:
-                    {
-
-                        op = (Operator *) n;
-
-
-                    }
-                    break;
-
-                    default:
-                    {
-
-                        cout << "  OTHER  ";
-
-                    }
-                    break;
-
-                } 
-
-                cout << endl;
-
+                be->execute(stack);
+                
             break;
 
-            }
+        }
 
-                curr = curr->getNext();
+        curr = curr->getNext();
 
     }
 
     cout << " -- Symbol Table -- \n-------------------\n";
 
-    std::map< string, double >::const_iterator iter;
+    std::map<string, double>::const_iterator iter;
 
-    for ( iter = symbolTable.begin(); iter != symbolTable.end(); ++iter ) {
+    for ( iter = stack->symbolTable.begin(); iter != stack->symbolTable.end(); ++iter ) {
         cout << iter->first << '\t' << iter->second << '\n';
     }
 

@@ -6,8 +6,18 @@
 #define	NODE_h
 
 class Node  {
-	 protected:	int nodekind;					//token number
-	 public: Node(){};							//constructor
-	 		 int getKind() {return nodekind;};	//accessor
+
+	 protected:
+
+        int nodekind;
+
+	 public:
+
+        Node(){};
+        int getKind() {
+            return nodekind;
+        };
+        
 };
+
 #endif

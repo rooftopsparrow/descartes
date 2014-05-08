@@ -6,6 +6,7 @@
 
 #include "scanner.h"
 #include "expr.h"
+#include "runtimeStack.h"
 
 class Term {
     public:

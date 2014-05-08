@@ -40,14 +40,14 @@ void ParseTree::execute(){
 
         switch( curr->getKind() ) {
 
-            case BECOMES:
+        case BECOMES:
 
-                cout << "assign-stmt : ID BECOMES expr" << endl; 
-                Becomes  *be = (Becomes *) curr;
+            cout << "assign-stmt : ID BECOMES expr" << endl; 
+            Becomes  *be = (Becomes *) curr;
 
-                be->execute(stack);
+            be->execute(stack);
                 
-            break;
+        break;
 
         }
 

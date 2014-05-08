@@ -70,7 +70,7 @@ GRAMMAR
 9.    stmt : print-stmt
 10.   stmt :
 11.   if-stmt : IF expr THEN stmt-list else-part
-12.   else-part : ELSE stmt-lit FI
+12.   else-part : ELSE stmt-list FI
 13.   else-part : FI
 14.   loop-stmt : LOOP ID COLON stmt-list REPEAT
 15.   break-stmt : BREAK id-option

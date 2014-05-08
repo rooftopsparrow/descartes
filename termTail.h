@@ -6,12 +6,13 @@
 
 #include "scanner.h"
 #include "expr.h"
-#include "term.h"
-#include "tokens.h"
-#include "operator.h"
+#include "runtimeStack.h"
 
 class TermTail {
-		 public: TermTail() { };		//constructor
-		 public: Expr * parse(Scanner &);	
+    public:
+    	TermTail() {};
+    	Expr * parse(Scanner &);	
+        double execute(RuntimeStack *);
 };
+
 #endif

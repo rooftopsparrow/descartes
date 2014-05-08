@@ -1,7 +1,11 @@
 #include <stdlib.h>
+#include <iostream>
 #include "term.h"
+#include "runtimeStack.h"
 #include "factor.h"
 #include "factorTail.h"
+
+using namespace std;
 
 Expr * Term::parse(Scanner &scan) {
 
@@ -19,5 +23,4 @@ Expr * Term::parse(Scanner &scan) {
 		subtree->setLeft(lhs);
 		return subtree;
 	}
-}
-
+};

@@ -36,7 +36,9 @@ class Operator : public  Expr {
 
         void setLeft(Expr* ptr);
 
-        double execute(RuntimeStack* stack);
+        double execute(RuntimeStack *, Expr *);
+
+        double execute(RuntimeStack *);
 
 };
 #endif

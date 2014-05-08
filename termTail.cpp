@@ -1,5 +1,13 @@
+#include <iostream>
 #include <stdlib.h>
+
+#include "term.h"
 #include "termTail.h"
+#include "runtimeStack.h"
+#include "tokens.h"
+#include "operator.h"
+
+using namespace std;
 
 Expr * TermTail::parse(Scanner &scan) {
 	Expr		*subtree;				//the expression subtree
@@ -26,4 +34,11 @@ Expr * TermTail::parse(Scanner &scan) {
 	} 
 
 	return NULL;
+}
+
+double TermTail::execute(RuntimeStack * stack) {
+
+
+	return 0.0;
+
 }

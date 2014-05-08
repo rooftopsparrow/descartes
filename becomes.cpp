@@ -47,6 +47,7 @@ void Becomes::execute(RuntimeStack* stack) {
     Number* num;
     Id* fromId;
     Operator* op;
+    double result;
 
     n = getRHS();
 
@@ -78,15 +79,15 @@ void Becomes::execute(RuntimeStack* stack) {
     case MINUS:
     case DIV:
     case TIMES:
-    {
 
-        cout << " (Operator) ";
+        cout << " <expression> " << endl;
         op = (Operator *) n;
-        
-        double result = op->execute(stack);
+        cout << "------ stack ----" << endl; 
+        result = op->execute(stack);
+        cout << "------ stack ----" << endl; 
 
         stack->symbolTable[ id->getName() ] = result;
-    }
+
     break;
 
     default:
